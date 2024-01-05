@@ -1,0 +1,68 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "standard-with-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {}
+  },
+  "ignorePatterns": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.svg",
+    "**/*.md",
+    "**/*.json",
+    "**/*.ttf",
+    "**/*.txt",
+    "**/*.dist",
+    "**/*.jpg",
+    "**/*.png"
+  ],
+  "plugins": ["@typescript-eslint", "prettier", "import", "@typescript-eslint/eslint-plugin"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "import/no-anonymous-default-export": "off",
+    "comma-dangle": ["error", "always-multiline"],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "varsIgnorePattern": "React",
+        "argsIgnorePattern": "^_$" // ignore "_"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 140,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreComments": true,
+        "ignorePattern": "d=\"([\\s\\S]*?)\""
+        // svg d=...
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
+    ]
+  }
+}
