@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function curry(func) {
+const curry = (func) => {
   let args = [];
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -16,7 +16,7 @@ function curry(func) {
   }
 
   return curried;
-}
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const sum = (...args) => {
