@@ -1,5 +1,5 @@
 const fibonacci2 = (n: number, memo: Record<number, number> = {}): number => {
-  if (memo[n] !== undefined) {
+  if (memo[n]) {
     return memo[n];
   }
 
