@@ -5,7 +5,10 @@ function memorize<T extends number[], R>(fn: (...args: T) => R): (...args: T) =>
     const key = JSON.stringify(args);
 
     if (!Boolean(cache[key])) {
+      // # 1
       // cache[key] = fn.apply(null, args);
+
+      // # 2
       cache[key] = fn(...args);
     }
 
