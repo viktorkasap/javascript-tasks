@@ -64,6 +64,9 @@
         "next": "return"
       }
     ],
+    "@typescript-eslint/ban-ts-comment": 0,
+    //    "@typescript-eslint/ban-ts-comment": 0,
+    "no-prototype-builtins": 0,
     "no-extra-boolean-cast": 0 // !
     //    "@typescript-eslint/strict-boolean-expressions": "off" Boolean(arg)
   }
