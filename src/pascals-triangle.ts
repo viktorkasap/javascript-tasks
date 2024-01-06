@@ -1,4 +1,4 @@
-const pascalTriangle = (rows: number): number[][] => {
+const pascalsTriangle = (rows: number): number[][] => {
   const triangle = [[1], [1, 1]];
 
   for (let i = 2; i < rows; i += 1) {
@@ -15,5 +15,5 @@ const pascalTriangle = (rows: number): number[][] => {
   return triangle;
 };
 
-console.log(pascalTriangle(3));
-console.log(pascalTriangle(5));
+console.log(pascalsTriangle(3));
+console.log(pascalsTriangle(5));
