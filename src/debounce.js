@@ -12,7 +12,6 @@ function debounce(func, wait) {
   };
 }
 
-// Пример использования
 window.addEventListener(
   'resize',
   debounce(() => {

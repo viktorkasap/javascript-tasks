@@ -14,7 +14,6 @@ function throttle(func, limit) {
   };
 }
 
-// Пример использования
 window.addEventListener(
   'scroll',
   throttle(() => {

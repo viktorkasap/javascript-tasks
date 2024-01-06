@@ -63,6 +63,8 @@
         "prev": "*",
         "next": "return"
       }
-    ]
+    ],
+    "no-extra-boolean-cast": 0 // !
+    //    "@typescript-eslint/strict-boolean-expressions": "off" Boolean(arg)
   }
 }
