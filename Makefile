@@ -3,7 +3,7 @@
 # include .env
 
 # вызывает по умолчанию команду help.
-.PHONY: help
+.PHONY: help test
 
 help: ### Ignore - Show current help message
 	@echo "✨ App Commands:"
@@ -35,3 +35,20 @@ pretty: ## ✨ Do pretty code css/js
 	@echo "🚀 [Prettier] Formatting code..."
 	pnpm pretty
 	@echo "✅  [Prettier] Code style check passed"
+
+test: ## ✨ Do pretty code css/js
+	@echo "🚀 [Vitest] Testing code..."
+	pnpm test
+	@echo "✅  [Vitest] Testing check finished"
+
+test-waiting: ## ✨ Do pretty code css/js
+	@echo "🚀 [Vitest] Testing code..."
+	pnpm test:waiting
+	@echo "✅  [Vitest] Testing check finished"
+
+test-coverage: ## ✨ Do pretty code css/js
+	@echo "🚀 [Vitest] Testing code..."
+	pnpm test:coverage
+	@echo "✅  [Vitest] Testing check finished"
+
+
