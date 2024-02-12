@@ -1,3 +1,4 @@
+// BigO(log n)
 const binarySearch = (arr: number[], element: number): number => {
   let start = 0;
   let end = arr.length - 1;

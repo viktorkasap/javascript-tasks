@@ -1,3 +1,4 @@
+// Depth-First Search (DFS)
 const searchingLand = (matrix: number[][], rowIndex: number, cellIndex: number, counter: number): number => {
   let total = counter;
 
