@@ -93,6 +93,6 @@ console.log('Output:', findBiggestIsland1(matrix1)); // 5
 console.log('Output:', findBiggestIsland1(matrix2)); // 6
 
 /**
- * TERMINAL
- * -> clear && npx ts-node src/findBiggestIsland1.ts
+ * TERMINAL ->
+ * clear && npx ts-node src/findBiggestIsland1.ts
  */
