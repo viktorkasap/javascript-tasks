@@ -50,7 +50,7 @@ const searchingLand = (matrix: number[][], rowIndex: number, cellIndex: number, 
 };
 
 const findBiggestIsland1 = (originalMatrix: number[][]): number => {
-  let result: number = 0;
+  const result: number[] = [];
   const matrix = originalMatrix.map((row) => [...row]);
 
   for (let i = 0; i < matrix.length; i += 1) {
@@ -60,16 +60,12 @@ const findBiggestIsland1 = (originalMatrix: number[][]): number => {
       const cell = row[j];
 
       if (cell === 1) {
-        const size = searchingLand(matrix, i, j, 0);
-
-        if (size > result) {
-          result = size;
-        }
+        result.push(searchingLand(matrix, i, j, 0));
       }
     }
   }
 
-  return result;
+  return Math.max(...result);
 };
 
 const matrix1: number[][] = [
