@@ -91,8 +91,8 @@ const mtrx5 = [
   [0, 0, 0, 1, 1, 0],
 ];
 
-// console.log('Output:', findBiggestIslandDFS(mtrx3)); // 5
-// console.log('Output:', findBiggestIslandDFS(mtrx4)); // 6
+console.log('Output:', findBiggestIslandDFS(mtrx3)); // 5
+console.log('Output:', findBiggestIslandDFS(mtrx4)); // 6
 console.log('Output:', findBiggestIslandDFS(mtrx5)); // 7
 
 /**
