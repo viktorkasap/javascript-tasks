@@ -1,55 +1,51 @@
-// Depth-First Search (DFS)
-const searchingLand = (matrix: number[][], rowIndex: number, cellIndex: number, counter: number): number => {
+// Depth First Search (DFS)
+const searchingLandDFS = (matrix: number[][], rowIndex: number, cellIndex: number, counter: number): number => {
   let total = counter;
 
   // To top
   const topRow = matrix[rowIndex - 1];
-
   if (topRow) {
     const topCell = topRow[cellIndex];
 
     if (topCell && topCell !== -1) {
       topRow[cellIndex] = -1;
 
-      total = searchingLand(matrix, rowIndex - 1, cellIndex, total + 1);
+      total = searchingLandDFS(matrix, rowIndex - 1, cellIndex, total + 1);
     }
   }
 
   // To right
   const nextCell = matrix[rowIndex][cellIndex + 1];
-
   if (nextCell && nextCell !== -1) {
     matrix[rowIndex][cellIndex + 1] = -1;
 
-    total = searchingLand(matrix, rowIndex, cellIndex + 1, total + 1);
+    total = searchingLandDFS(matrix, rowIndex, cellIndex + 1, total + 1);
   }
 
   // To bottom
   const bottomRow = matrix[rowIndex + 1];
-
   if (bottomRow) {
     const bottomCell = bottomRow[cellIndex];
 
     if (bottomCell && bottomCell !== -1) {
       bottomRow[cellIndex] = -1;
 
-      total = searchingLand(matrix, rowIndex + 1, cellIndex, total + 1);
+      total = searchingLandDFS(matrix, rowIndex + 1, cellIndex, total + 1);
     }
   }
 
   // To left
   const prevCell = matrix[rowIndex][cellIndex - 1];
-
   if (prevCell && prevCell !== -1) {
     matrix[rowIndex][cellIndex - 1] = -1;
 
-    total = searchingLand(matrix, rowIndex, cellIndex - 1, total + 1);
+    total = searchingLandDFS(matrix, rowIndex, cellIndex - 1, total + 1);
   }
 
   return total;
 };
 
-const findBiggestIsland1 = (originalMatrix: number[][]): number => {
+const findBiggestIslandDFS = (originalMatrix: number[][]): number => {
   const sizes: number[] = [];
   const matrix = originalMatrix.map((row) => [...row]);
 
@@ -60,15 +56,15 @@ const findBiggestIsland1 = (originalMatrix: number[][]): number => {
       const cell = row[j];
 
       if (cell === 1) {
-        sizes.push(searchingLand(matrix, i, j, 0));
+        sizes.push(searchingLandDFS(matrix, i, j, 0));
       }
     }
   }
 
-  return Math.max(...sizes);
+  return Boolean(sizes.length) ? Math.max(...sizes) : 0;
 };
 
-const matrix1: number[][] = [
+const mtrx3 = [
   [0, 1, 0, 0, 0, 0],
   [0, 1, 1, 0, 0, 0],
   [0, 1, 1, 0, 0, 0],
@@ -77,7 +73,7 @@ const matrix1: number[][] = [
   [0, 0, 0, 1, 1, 0],
 ];
 
-const matrix2 = [
+const mtrx4 = [
   [0, 1, 0, 0, 0, 0],
   [0, 1, 1, 1, 0, 0],
   [0, 1, 1, 0, 0, 0],
@@ -86,10 +82,20 @@ const matrix2 = [
   [0, 0, 0, 1, 1, 0],
 ];
 
-console.log('Output:', findBiggestIsland1(matrix1)); // 5
-console.log('Output:', findBiggestIsland1(matrix2)); // 6
+const mtrx5 = [
+  [0, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 0, 0],
+  [0, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 1, 0],
+  [0, 0, 0, 1, 1, 0],
+];
+
+// console.log('Output:', findBiggestIslandDFS(mtrx3)); // 5
+// console.log('Output:', findBiggestIslandDFS(mtrx4)); // 6
+console.log('Output:', findBiggestIslandDFS(mtrx5)); // 7
 
 /**
  * TERMINAL ->
- * clear && npx ts-node src/findBiggestIsland1.ts
+ * clear && npx ts-node src/findBiggestIslandDFS.ts
  */
