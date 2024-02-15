@@ -13,28 +13,28 @@ const searchingLandBFS = (matrix: number[][], rowIndex: number, cellIndex: numbe
       const [currentRowIndex, currentCellIndex] = queueItem;
 
       // top
-      const topCell = matrix[currentRowIndex - 1] ? matrix[currentRowIndex - 1][currentCellIndex] : false;
+      const topCell = matrix[currentRowIndex - 1]?.[currentCellIndex];
       if (topCell && topCell !== -1) {
         queue.push([currentRowIndex - 1, currentCellIndex]);
         matrix[currentRowIndex - 1][currentCellIndex] = -1;
       }
 
       // bottom
-      const bottomCell = matrix[currentRowIndex + 1] ? matrix[currentRowIndex + 1][currentCellIndex] : false;
+      const bottomCell = matrix[currentRowIndex + 1]?.[currentCellIndex];
       if (bottomCell && bottomCell !== -1) {
         queue.push([currentRowIndex + 1, currentCellIndex]);
         matrix[currentRowIndex + 1][currentCellIndex] = -1;
       }
 
       // left
-      const leftCell = matrix[currentRowIndex][currentCellIndex - 1];
+      const leftCell = matrix[currentRowIndex]?.[currentCellIndex - 1];
       if (leftCell && leftCell !== -1) {
         queue.push([currentRowIndex, currentCellIndex - 1]);
         matrix[currentRowIndex][currentCellIndex - 1] = -1;
       }
 
       // right
-      const rightCell = matrix[currentRowIndex][currentCellIndex + 1];
+      const rightCell = matrix[currentRowIndex]?.[currentCellIndex + 1];
       if (rightCell && rightCell !== -1) {
         queue.push([currentRowIndex, currentCellIndex + 1]);
         matrix[currentRowIndex][currentCellIndex + 1] = -1;
