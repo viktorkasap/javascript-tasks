@@ -11,3 +11,5 @@ export const pow = (x: number, n: number): number => {
 
   return result;
 };
+
+console.log(pow(3, 5));

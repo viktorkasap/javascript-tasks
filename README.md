@@ -1,4 +1,4 @@
 ```bash
-# example
-npx ts-node src/index.ts
+# Run TS file in terminal example
+clear && npx ts-node src/<file_name>.ts
 ```
