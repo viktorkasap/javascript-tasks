@@ -7,7 +7,7 @@ const longestSubstring = (str: string): number => {
     if (!substr.has(str[i])) {
       substr.add(str[i]);
     } else {
-      while (substr.has(str[position])) {
+      while (substr.has(str[i])) {
         substr.delete(str[position]);
         position += 1;
       }
@@ -22,6 +22,7 @@ const longestSubstring = (str: string): number => {
   return maxLength;
 };
 
+console.log('dvdf', { expect: 3, result: longestSubstring('dvdf') });
 console.log('abcabcbb', { expect: 3, result: longestSubstring('abcabcbb') });
 console.log('bbbbb', { expect: 1, result: longestSubstring('bbbbb') });
 console.log('pwwkew', { expect: 3, result: longestSubstring('pwwkew') });
