@@ -1,45 +1,66 @@
-const isValidSudoku = (matrix: string[][], size: number, sectorSize: number): boolean => {
-  const isValid = (cellValue: string, row: number, col: number) => {
-    if (cellValue === '.') {
-      return true;
-    }
+const isValidSudoku = (matrix: string[][]): boolean => {
+  const SIZE = 9;
+  const SECTOR_SIZE = 3;
 
-    for (let i = 0; i < size; i += 1) {
-      if (matrix[row][i] === cellValue && i !== col) {
+  const rowMap = new Map<number, Set<string>>([
+    [0, new Set()],
+    [1, new Set()],
+    [2, new Set()],
+    [3, new Set()],
+    [4, new Set()],
+    [5, new Set()],
+    [6, new Set()],
+    [7, new Set()],
+    [8, new Set()],
+  ]);
+  const colMap = new Map<number, Set<string>>([
+    [0, new Set()],
+    [1, new Set()],
+    [2, new Set()],
+    [3, new Set()],
+    [4, new Set()],
+    [5, new Set()],
+    [6, new Set()],
+    [7, new Set()],
+    [8, new Set()],
+  ]);
+  const sectorMap = new Map<number, Set<string>>([
+    [0, new Set()],
+    [1, new Set()],
+    [2, new Set()],
+    [3, new Set()],
+    [4, new Set()],
+    [5, new Set()],
+    [6, new Set()],
+    [7, new Set()],
+    [8, new Set()],
+  ]);
+
+  for (let rowIndex = 0; rowIndex < SIZE; rowIndex += 1) {
+    for (let colIndex = 0; colIndex < SIZE; colIndex += 1) {
+      const value = matrix[rowIndex][colIndex];
+
+      if (value === '.') {
+        continue;
+      }
+
+      const sectorIndex = Math.floor(rowIndex / SECTOR_SIZE) * SECTOR_SIZE + Math.floor(colIndex / SECTOR_SIZE);
+      const rowSet = rowMap.get(rowIndex);
+      const colSet = colMap.get(colIndex);
+      const sectorSet = sectorMap.get(sectorIndex);
+
+      if (rowSet?.has(value) || colSet?.has(value) || sectorSet?.has(value)) {
         return false;
       }
-    }
 
-    for (let i = 0; i < size; i += 1) {
-      if (matrix[i][col] === cellValue && i !== row) {
-        return false;
-      }
-    }
-
-    const startRow = Math.floor(row / sectorSize) * sectorSize;
-    const startCol = Math.floor(col / sectorSize) * sectorSize;
-
-    for (let i = startRow; i < startRow + sectorSize; i += 1) {
-      for (let j = startCol; j < startCol + sectorSize; j += 1) {
-        if (matrix[i][j] === cellValue && (i !== row || j !== col)) {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  };
-
-  for (let row = 0; row < size; row += 1) {
-    for (let col = 0; col < size; col += 1) {
-      console.log({ row, col, value: matrix[row][col] });
-      if (!isValid(matrix[row][col], row, col)) {
-        return false;
-      }
+      // @ts-expect-error
+      rowMap.set(rowIndex, rowSet.add(value));
+      // @ts-expect-error
+      colMap.set(colIndex, colSet.add(value));
+      // @ts-expect-error
+      sectorMap.set(sectorIndex, sectorSet.add(value));
     }
   }
-
-  console.log(sectorSize);
 
   return true;
 };
@@ -55,7 +76,6 @@ const matrix1 = [
   ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
   ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
 ];
-
 const matrix2 = [
   ['8', '3', '.', '.', '7', '.', '.', '.', '.'],
   ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
@@ -67,13 +87,78 @@ const matrix2 = [
   ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
   ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
 ];
+const matrix3 = [
+  ['.', '.', '4', '.', '.', '.', '6', '3', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['5', '.', '.', '.', '.', '.', '.', '9', '.'],
+  ['.', '.', '.', '5', '6', '.', '.', '.', '.'],
+  ['4', '.', '3', '.', '.', '.', '.', '.', '1'],
+  ['.', '.', '.', '7', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '5', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+];
 
-const SIZE = 9;
-const SECTOR_SIZE = 3;
-console.log('is valid sudoku:', { expect: 'true', result: isValidSudoku(matrix1, SIZE, SECTOR_SIZE) });
-console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku(matrix2, SIZE, SECTOR_SIZE) });
+console.log('is valid sudoku:', { expect: 'true', result: isValidSudoku(matrix1) });
+console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku(matrix2) });
+console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku(matrix3) });
 
 /**
  * TERMINAL ->
- * clear && npx ts-node src/is-valid-sudoku.ts
+ * clear && npx ts-node src/is-valid-sudoku2.ts
+ */
+
+/*
+function isValidSudoku(board: string[][]): boolean {
+    //check rows
+    let rows: string[] = ["","","","","","","","",""]
+    let cols: string[] = ["","","","","","","","",""]
+    let sq: string[] = ["","","","","","","","",""]
+
+    for(let y = 0; y < board.length; y++) {
+        for(let x = 0; x < board.length; x++) {
+            const val = board[x][y]
+
+            if(val == ".") {
+                continue
+            }
+
+            if(rows[x].indexOf(val) != -1) {
+                return false
+            }
+
+            if(cols[y].indexOf(val) != -1) {
+                return false
+            }
+
+            const s: number = getSquare(x,y)
+
+            if(sq[s].indexOf(val) != -1) {
+
+                return false
+            }
+            rows[x] += val
+            cols[y] += val
+            sq[s] += val
+
+        }
+    }
+    return true
+}
+
+function getSquare(x:number, y: number) {
+
+    if(x < 3 && y < 3) return 0
+    if(x < 6 && y < 3) return 1
+    if(y < 3) return 2
+
+    if(x < 3 && y < 6) return 3
+    if(x < 6 && y < 6) return 4
+    if(y < 6) return 5
+
+    if(x < 3) return 6
+    if(x < 6) return 7
+    return 8
+
+}
  */

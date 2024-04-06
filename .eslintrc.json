@@ -69,6 +69,7 @@
     "no-prototype-builtins": 0,
     "no-extra-boolean-cast": 0,
     //    "@typescript-eslint/strict-boolean-expressions": "off" Boolean(arg)
-    "@typescript-eslint/strict-boolean-expressions": 0
+    "@typescript-eslint/strict-boolean-expressions": 0,
+    "@typescript-eslint/prefer-nullish-coalescing": 0
   }
 }
