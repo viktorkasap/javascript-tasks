@@ -1,4 +1,4 @@
-const isValidSudoku = (matrix: string[][]): boolean => {
+const isValidSudoku2 = (matrix: string[][]): boolean => {
   const SIZE = 9;
   const SECTOR_SIZE = 3;
 
@@ -65,7 +65,7 @@ const isValidSudoku = (matrix: string[][]): boolean => {
   return true;
 };
 
-const matrix1 = [
+const matrix21 = [
   ['5', '3', '.', '.', '7', '.', '.', '.', '.'],
   ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
   ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
@@ -76,7 +76,7 @@ const matrix1 = [
   ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
   ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
 ];
-const matrix2 = [
+const matrix22 = [
   ['8', '3', '.', '.', '7', '.', '.', '.', '.'],
   ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
   ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
@@ -87,7 +87,7 @@ const matrix2 = [
   ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
   ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
 ];
-const matrix3 = [
+const matrix23 = [
   ['.', '.', '4', '.', '.', '.', '6', '3', '.'],
   ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
   ['5', '.', '.', '.', '.', '.', '.', '9', '.'],
@@ -99,9 +99,9 @@ const matrix3 = [
   ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
 ];
 
-console.log('is valid sudoku:', { expect: 'true', result: isValidSudoku(matrix1) });
-console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku(matrix2) });
-console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku(matrix3) });
+console.log('is valid sudoku:', { expect: 'true', result: isValidSudoku2(matrix21) });
+console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku2(matrix22) });
+console.log('is valid sudoku:', { expect: 'false', result: isValidSudoku2(matrix23) });
 
 /**
  * TERMINAL ->
