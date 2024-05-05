@@ -4,19 +4,34 @@ function throttle(func, limit) {
   let inThrottle = false;
 
   return function () {
-    const args = arguments;
-
     if (!inThrottle) {
       inThrottle = true;
-      func.apply(this, args);
+      func.apply(this, arguments);
       setTimeout(() => (inThrottle = false), limit);
     }
   };
 }
 
-window.addEventListener(
-  'scroll',
-  throttle(() => {
-    console.log('Scroll event handler call at most every 100ms');
-  }, 100),
-);
+// Test
+// window.addEventListener(
+//   'scroll',
+//   throttle(() => {
+//     console.log('Scroll event handler call at most every 100ms');
+//   }, 100),
+// );
+
+function baz(a) {
+  console.log(a);
+}
+
+const fn1000 = throttle(baz, 1000);
+
+for (let i = 0; i < 10; i += 1) {
+  const delay = i;
+  setTimeout(() => fn1000(i), delay * 1000);
+}
+
+/**
+ * TERMINAL ->
+ * clear && npx ts-node src/throttling.js
+ */
