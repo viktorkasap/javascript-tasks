@@ -2,8 +2,8 @@
 
 function throttle2(func, ms) {
   let isThrottled = false;
-  let savedArgs;
-  let savedThis;
+  let savedArgs = null;
+  let savedThis = null;
 
   function wrapper() {
     if (isThrottled) {
@@ -21,7 +21,8 @@ function throttle2(func, ms) {
       isThrottled = false; // (3)
       if (savedArgs) {
         wrapper.apply(savedThis, savedArgs);
-        savedArgs = savedThis = null;
+        savedArgs = null;
+        savedThis = null;
       }
     }, ms);
   }
@@ -30,15 +31,16 @@ function throttle2(func, ms) {
 }
 
 // Test
-function baz(a) {
-  console.log(a);
+function baz(time) {
+  console.log(Math.floor((Date.now() - time) / 1000) + 's');
 }
 
+const now = Date.now();
 const fn1000 = throttle2(baz, 1000);
 
 for (let i = 0; i < 10; i += 1) {
   const delay = i;
-  setTimeout(() => fn1000(i), delay * 1000);
+  setTimeout(() => fn1000(now), delay * 1000);
 }
 
 /**

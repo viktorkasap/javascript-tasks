@@ -20,15 +20,16 @@ function throttle(func, limit) {
 //   }, 100),
 // );
 
-function baz(a) {
-  console.log(a);
+function baz(time) {
+  console.log(Math.floor((Date.now() - time) / 1000) + 's');
 }
 
+const now = Date.now();
 const fn1000 = throttle(baz, 1000);
 
 for (let i = 0; i < 10; i += 1) {
   const delay = i;
-  setTimeout(() => fn1000(i), delay * 1000);
+  setTimeout(() => fn1000(now), delay * 1000);
 }
 
 /**
