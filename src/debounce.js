@@ -7,14 +7,27 @@ function debounce(func, wait) {
       clearTimeout(timeout);
       func.apply(this, args);
     };
+
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
 }
 
-window.addEventListener(
-  'resize',
-  debounce(() => {
-    console.log('Resize event handler call after 200ms of no resize events');
-  }, 200),
-);
+// window.addEventListener(
+//   'resize',
+//   debounce(() => {
+//     console.log('Resize event handler call after 200ms of no resize events');
+//   }, 200),
+// );
+
+const debounceFn = (x) => {
+  console.log('Hahha', x);
+};
+
+const debouncedFn = debounce(debounceFn, 1000);
+debouncedFn('Ololo');
+
+/**
+ * TERMINAL ->
+ * clear && npx ts-node src/debounce.js
+ */
