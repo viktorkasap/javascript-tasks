@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-this-alias, @typescript-eslint/strict-boolean-expressions */
 
 function throttle(func, limit) {
-  let inThrottle;
+  let inThrottle = false;
 
   return function () {
     const args = arguments;
-    const context = this;
+
     if (!inThrottle) {
-      func.apply(context, args);
       inThrottle = true;
+      func.apply(this, args);
       setTimeout(() => (inThrottle = false), limit);
     }
   };
