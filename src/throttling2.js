@@ -5,15 +5,15 @@ function throttle2(func, ms) {
   let savedArgs = null;
   let savedThis = null;
 
-  function wrapper() {
+  function wrapper(...args) {
     if (isThrottled) {
-      savedArgs = arguments;
+      savedArgs = args;
       savedThis = this;
 
       return;
     }
 
-    func.apply(this, arguments);
+    func.apply(this, args);
 
     isThrottled = true;
 
