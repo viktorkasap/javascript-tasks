@@ -37,5 +37,5 @@ console.log('result:', maxSumSubarray(9, [7, 3, 5, 6])); // == 8 ([3, 5])
 
 /**
  * TERMINAL ->
- * clear && node src/maxSumSubarray.js
+ * clear && node src/slide-window/maxSumSubarray.js
  */

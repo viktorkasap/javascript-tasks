@@ -30,6 +30,6 @@ console.log('pwwkew', { expect: 3, result: longestSubstring('pwwkew') });
 
 /**
  * TERMINAL ->
- * clear && npx ts-node src/longest-substring.ts
- * compile - tsc src/longest-substring.ts
+ * clear && npx ts-node src/slide-window/longest-substring.ts
+ * compile - tsc src/slide-window/longest-substring.ts
  */

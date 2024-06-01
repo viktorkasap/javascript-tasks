@@ -40,5 +40,5 @@ console.log('result:', minSubArrayLen2(15, [1, 2, 3, 4, 5])); // == 5 - [1, 2, 3
 
 /**
  * TERMINAL ->
- * clear && node src/minimum-size-subarray-sum2.js
+ * clear && node src/slide-window/minimum-size-subarray-sum2.js
  */

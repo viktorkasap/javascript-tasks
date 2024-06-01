@@ -36,5 +36,5 @@ console.log('result:', minSubArrayLen(7, [2, 3, 1, 2, 4, 3])); // == 2 - [4, 3]
 /**
  * TERMINAL ->
  * clear && npx ts-node src/minimum-size-subarray-sum.ts
- * compile - tsc src/minimum-size-subarray-sum.ts
+ * compile - tsc src/slide-window/minimum-size-subarray-sum.ts
  */
