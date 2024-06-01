@@ -1,6 +1,6 @@
 /* Method Kadana */
 
-const getMaxSubSum = (arr: number[]) => {
+const getMaxSubSum = (arr: number[]): number => {
   let currentSum = 0;
   let maxSum = 0;
 
@@ -30,3 +30,8 @@ getMaxSubSum([-1, 2, 3, -9, 11]); // == 11
 // getMaxSubSum([1, 2, 3]); // == 6
 
 // clear && npx ts-node src/get-max-sub-sum-array.ts
+
+/**
+ * TERMINAL ->
+ * clear && npx ts-node src/get-max-sub-sum-array.ts
+ */

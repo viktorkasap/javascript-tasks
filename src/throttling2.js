@@ -39,8 +39,9 @@ const now = Date.now();
 const fn1000 = throttle2(baz, 1000);
 
 for (let i = 0; i < 10; i += 1) {
-  const delay = i;
-  setTimeout(() => fn1000(now), delay * 1000);
+  setTimeout(() => {
+    fn1000(now);
+  }, i * 1000);
 }
 
 /**
