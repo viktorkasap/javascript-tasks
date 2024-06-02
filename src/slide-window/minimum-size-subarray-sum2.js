@@ -4,13 +4,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 const minSubArrayLen2 = (target, nums) => {
+  // eslint-disable-next-line no-debugger
+  debugger;
   const length = nums.length;
   let minLength = length + 1;
 
   let left = 0;
   let sum = 0;
 
-  const temp = []; // for debugging
+  const temp = []; /* for debugging */
 
   for (let right = 0; right <= length; right += 1) {
     const value = nums[right];
@@ -22,7 +24,7 @@ const minSubArrayLen2 = (target, nums) => {
     }
 
     if (value) {
-      temp.push(value);
+      temp.push(value); /* for debugging */
       sum += value;
     }
 
