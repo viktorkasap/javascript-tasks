@@ -45,7 +45,7 @@ const searchingLandDFS = (matrix: number[][], rowIndex: number, cellIndex: numbe
   return total;
 };
 
-const findBiggestIslandDfs = (originalMatrix: number[][]): number => {
+const dfsFindBiggestIsland = (originalMatrix: number[][]): number => {
   const sizes: number[] = [];
   const matrix = originalMatrix.map((row) => [...row]);
 
@@ -91,9 +91,9 @@ const mtrx5 = [
   [0, 0, 0, 1, 1, 0],
 ];
 
-console.log('Output:', findBiggestIslandDfs(mtrx3)); // 5
-console.log('Output:', findBiggestIslandDfs(mtrx4)); // 6
-console.log('Output:', findBiggestIslandDfs(mtrx5)); // 7
+console.log('Output:', dfsFindBiggestIsland(mtrx3)); // 5
+console.log('Output:', dfsFindBiggestIsland(mtrx4)); // 6
+console.log('Output:', dfsFindBiggestIsland(mtrx5)); // 7
 
 /**
  * TERMINAL ->

@@ -47,7 +47,7 @@ const searchingLandBFS = (matrix: number[][], rowIndex: number, cellIndex: numbe
   return size;
 };
 
-const findBiggestIslandBfs = (originalMatrix: number[][]): number => {
+const bfsFindBiggestIsland = (originalMatrix: number[][]): number => {
   const sizes: number[] = [];
   const matrix = originalMatrix.map((row) => [...row]);
 
@@ -82,8 +82,8 @@ const mtrx2 = [
   [0, 0, 0, 1, 1, 0],
 ];
 
-console.log('Output:', findBiggestIslandBfs(mtrx1)); // 5
-console.log('Output:', findBiggestIslandBfs(mtrx2)); // 7
+console.log('Output:', bfsFindBiggestIsland(mtrx1)); // 5
+console.log('Output:', bfsFindBiggestIsland(mtrx2)); // 7
 
 /**
  * TERMINAL ->
